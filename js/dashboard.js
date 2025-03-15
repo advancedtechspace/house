@@ -1,7 +1,7 @@
 const url = new URL(window.location.href);
 const visitor = !!url.searchParams.get("v");
 
-document.querySelector(".ammount span").innerHTML = formatCurrency(10) + " MZN";
+// document.querySelector(".ammount span").innerHTML = formatCurrency(10) + " MZN";
 
 if (visitor) {
   document.querySelector(".ammount").style.display = "none";
@@ -10,30 +10,33 @@ if (visitor) {
 const query = {
   renda: true,
   local: "",
-  preco: 150000,
-  quartos: 2,
+  preco: 20000000,
+  quartos: 5,
 };
 
 getHouses();
 
-if (localStorage.getItem("user") === null && !visitor) {
-  window.location.href = "/login.html";
-}
+// if (localStorage.getItem("user") === null && !visitor) {
+//   window.location.href = "/login.html";
+// }
 
 document.querySelector(".logo h2").innerHTML = title;
 
-document.getElementById("btn-logout").addEventListener("click", () => {
-  localStorage.removeItem("user");
-  window.location.href = "/login.html";
-});
+// document.getElementById("btn-logout").addEventListener("click", () => {
+//   localStorage.removeItem("user");
+//   window.location.href = "/login.html";
+// });
 
 async function getHouses() {
   let hs = new String();
-  console.log(query.local, houses);
+  console.log(query.local, query.quartos);
   let hss = houses.filter(
-    (h) => query.local === String(h.local) || !query.local
+    (h) =>
+      (query.local === String(h.local) || !query.local) &&
+      parseInt(h.quartos) <= parseInt(query.quartos) &&
+      h.renda === query.renda &&
+      h.preco <= query.preco
   );
-  console.log(hss);
 
   for (let i = 0; i < hss.length; i++) {
     const h = hss[i];
@@ -44,7 +47,7 @@ async function getHouses() {
     <div class="house-m"><div class='house-m-wrap'><button onClick=showDetails(${
       h.id
     }) class='btn-contact'>
-        Ver detalhes</button></div></div>
+        Ver contacto</button></div></div>
     <div class="house-f">
       <h4>Residência tipo ${h.quartos}
       </h4>
@@ -75,13 +78,32 @@ async function showDetails(_id) {
   }
 
   removeValor();
-  const user = houses.find(({id}) => id == _id )
-  alert(user.user_tel)
+  const user = houses.find(({ id }) => id == _id);
+  alert("CONTACTO: (+258) " + user.user_tel);
 }
 
+// Query
 document.getElementById("select-local").addEventListener("change", (e) => {
   query.local = e.target.value;
   getHouses();
+});
+
+document.getElementById("quartos").addEventListener("change", (e) => {
+  query.quartos = e.target.value;
+  getHouses();
+});
+
+document.getElementById("preco").addEventListener("change", (e) => {
+  query.preco = parseInt(e.target.value);
+  getHouses();
+});
+
+document.querySelectorAll(".radio-renda-venda").forEach((radio) => {
+  radio.addEventListener("change", (e) => {
+    console.log(e.target.value);
+    query.renda = !query.renda;
+    getHouses();
+  });
 });
 
 async function filtrar() {
@@ -94,6 +116,4 @@ async function filtrar() {
   getHouses();
 }
 
-async function removeValor() {
-  
-}
+async function removeValor() {}

@@ -62,8 +62,8 @@ const houses = [
   {
     id: "5",
     renda: true,
-    quartos: 1,
-    preco: 1700,
+    quartos: 4,
+    preco: 12700,
     local: 3,
     andar: 0,
     user: "y",
