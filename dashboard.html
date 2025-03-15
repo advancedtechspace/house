@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="shortcut icon" href="assets/img/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <header>
+      <div class="h-left">
+        <a href="index.html" class="logo">
+          <span class="img"></span>
+          <h2></h2>
+        </a>
+      </div>
+
+      <div class="h-right">
+        <div class="ammount"><span>10 MZN</span></div>
+        <a href="#" id="btn-logout" class="login"
+          ><img src="assets/img/user.svg" alt="user-icon" width="30px"
+        /></a>
+      </div>
+    </header>
+    <main>
+      <div class="filter">
+        <select name="local" id="select-local"></select>
+        <label for="">Preço limite:</label>
+        <input type="number" placeholder="Preço máximo" value="150000" />
+        <label for="">Quartos:</label>
+        <input type="number" placeholder="Quartos" min="1" max="7" value="2" />
+        <label for="">Renda</label>
+        <input type="radio" name="renda-venda" id="renda" checked />
+        <label for="">Venda</label>
+        <input type="radio" name="renda-venda" id="venda" />
+      </div>
+
+      <div class="houses"></div>
+    </main>
+  </body>
+
+  <script src="js/config.js"></script>
+  <script src="js/distritos.js"></script>
+  <script src="js/houses.js"></script>
+  <script src="js/dashboard.js"></script>
+</html>

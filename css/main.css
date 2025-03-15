@@ -1,0 +1,139 @@
+:root {
+  --primary-color: blueviolet;
+  --logo-bg: var(--primary-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  flex-direction: column;
+}
+
+header .h-right {
+  display: flex;
+  align-items: center;
+}
+
+.ammount {
+  margin-right: 10px;
+  background-color: #eee;
+  border-radius: 25px;
+  padding: 10px;
+  color: #2bccb1;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo h2 {
+  color: #aaa;
+  font-weight: lighter;
+}
+
+.logo span {
+  color: #fff;
+  background: url(../assets/img/logo.svg) no-repeat center center/20px;
+  background-color: var(--logo-bg);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  font-weight: bolder;
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+
+main {
+  min-height: 100vh;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--primary-color);
+}
+
+input {
+  background: none;
+  box-shadow: -1px -1px 2px -1px #eee;
+  border: 1px solid #444;
+  outline: none;
+}
+
+input,
+label {
+  display: inline-block;
+}
+
+input:focus {
+  border-color: var(--primary-color);
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  opacity: 0.8;
+}
+
+.btn {
+  padding: 15px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #8a2be2;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 2px 5px 10px #eee;
+  border-bottom: 2px solid #aaa;
+}
+
+select {
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 2px 5px 10px #eee;
+  border: 1px solid #444;
+  border-bottom: 2px solid #aaa;
+  background: none;
+}
+
+.a-sign,
+.a-recovery {
+  display: block;
+  margin: 10px;
+}
+
+.a-recovery {
+  text-align: right;
+}
+
+.a-sign {
+  text-align: center;
+}
