@@ -134,5 +134,11 @@ input {
 
 /* Responsive */
 @media screen and (max-width: 414px) {
+  .houses, .filter {
+    width: 90%;
+  }
 
+  select, input, label {
+    margin-bottom: 5px;
+  }
 }
