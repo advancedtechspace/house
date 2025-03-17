@@ -52,7 +52,7 @@ async function getHouses() {
       <h4>Residência tipo ${h.quartos}
       </h4>
       <div>
-        <span>Andar ${h.andar}</span> 🟣
+        <span>Andar ${h.andar}</span> |
         <span>${distritos.find(({ id }) => id == h.local).label}</span>
       </div>
     </div>
