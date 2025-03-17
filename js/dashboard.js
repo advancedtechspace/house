@@ -29,7 +29,17 @@ document.querySelector(".logo h2").innerHTML = title;
 
 async function getHouses() {
   let hs = new String();
-  console.log(query.local, query.quartos);
+
+  const res = await fetch(api_url + "/house/all", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      user: localStorage.getItem("user"),
+    },
+  });
+
+  const houses = await res.json();
+
   let hss = houses.filter(
     (h) =>
       (query.local === String(h.local) || !query.local) &&
@@ -44,9 +54,7 @@ async function getHouses() {
     <div class="house-h"><h4>${formatCurrency(h.preco)} MZN</h4><p>${
       h.renda ? "Renda" : "Venda"
     }</p></div>
-    <div class="house-m"><div class='house-m-wrap'><button onClick=showDetails(${
-      h.id
-    }) class='btn-contact'>
+    <div class="house-m"><div class='house-m-wrap'><button onClick=showDetails('${h._doc._id},${h.tel}'); class='btn-contact'>
         Ver contacto</button></div></div>
     <div class="house-f">
       <h4>Residência tipo ${h.quartos}
@@ -71,15 +79,15 @@ for (let i = 0; i < distritos.length; i++) {
 
 document.querySelector("#select-local").innerHTML = lcs;
 
-async function showDetails(_id) {
+async function showDetails(_idTel) {
   if (visitor) {
     alert("Faça login para ver detalhes.");
     return;
   }
 
   removeValor();
-  const user = houses.find(({ id }) => id == _id);
-  alert("CONTACTO: (+258) " + user.user_tel);
+  const tel = _idTel.split(',')[1]
+  alert("CONTACTO: (+258) " + tel);
 }
 
 // Query
@@ -100,7 +108,6 @@ document.getElementById("preco").addEventListener("change", (e) => {
 
 document.querySelectorAll(".radio-renda-venda").forEach((radio) => {
   radio.addEventListener("change", (e) => {
-    console.log(e.target.value);
     query.renda = !query.renda;
     getHouses();
   });
