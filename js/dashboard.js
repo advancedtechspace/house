@@ -89,7 +89,7 @@ async function showDetails(_idTel) {
 
   removeValor();
   const tel = _idTel.split(",")[1];
-  alert("CONTACTO: (+258) " + tel);
+  window.location.href = 'tel:+258' + tel;
 }
 
 // Query
