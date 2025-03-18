@@ -54,8 +54,10 @@ async function getHouses() {
     <div class="house-h"><h4>${formatCurrency(h.preco)} MZN</h4><p>${
       h.renda ? "Renda" : "Venda"
     }</p></div>
-    <div class="house-m"><div class='house-m-wrap'><button onClick=showDetails('${h._doc._id},${h.tel}'); class='btn-contact'>
-        Ver contacto</button></div></div>
+    <div class="house-m"><div class='house-m-wrap'><button onClick=showDetails('${
+      h._doc._id
+    },${h.tel}'); class='btn-contact'><i class='la la-phone'></i>
+        Telefonar</button></div></div>
     <div class="house-f">
       <h4>Residência tipo ${h.quartos}
       </h4>
@@ -86,7 +88,7 @@ async function showDetails(_idTel) {
   }
 
   removeValor();
-  const tel = _idTel.split(',')[1]
+  const tel = _idTel.split(",")[1];
   alert("CONTACTO: (+258) " + tel);
 }
 
