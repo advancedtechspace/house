@@ -7,7 +7,7 @@ header {
   width: 100%;
   padding: 10px;
   height: 50px;
-  position: sticky;
+  position: fixed;
   top: 0;
 }
 
@@ -130,6 +130,7 @@ input {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 2px 2px #eee;
+  margin-top: 70px;
 }
 
 /* Responsive */
